@@ -10,7 +10,7 @@ const createCustomer = async (req, resp) => {
         resp.state(201).json({message: 'Customer Saved...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 
 };
@@ -24,7 +24,7 @@ const updateCustomer = async (req, resp) => {
         resp.state(201).json({message: 'Customer Updated...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const deleteCustomer = async (req, resp) => {
@@ -35,7 +35,7 @@ const deleteCustomer = async (req, resp) => {
         resp.state(204).json({message: 'Customer Deleted...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const findCustomerById = async (req, resp) => {
@@ -47,7 +47,7 @@ const findCustomerById = async (req, resp) => {
         resp.state(200).json({message: 'Customer Data', data:selectedCustomer});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const loadAllCustomers = async (req, resp) => {
@@ -56,7 +56,7 @@ const loadAllCustomers = async (req, resp) => {
         resp.state(200).json({message: 'Customer Data', dataList:customers});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 

@@ -10,7 +10,7 @@ const createProduct = async (req, resp) => {
         resp.state(201).json({message: 'Product Saved...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 
 };
@@ -24,7 +24,7 @@ const updateProduct = async (req, resp) => {
         resp.state(201).json({message: 'Product Updated...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const updateProductQty = async (req, resp) => {
@@ -37,7 +37,7 @@ const updateProductQty = async (req, resp) => {
         resp.state(201).json({message: 'Product Updated...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const deleteProduct = async (req, resp) => {
@@ -48,7 +48,7 @@ const deleteProduct = async (req, resp) => {
         resp.state(204).json({message: 'Product Deleted...'});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const findProductById = async (req, resp) => {
@@ -60,7 +60,7 @@ const findProductById = async (req, resp) => {
         resp.state(200).json({message: 'Product Data', data:selectedProduct});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 const loadAllProducts = async (req, resp) => {
@@ -69,7 +69,7 @@ const loadAllProducts = async (req, resp) => {
         resp.state(200).json({message: 'Product Data', dataList:Products});
 
     } catch (e) {
-        resp.status(500).json({'message': 'Signup Error', error: e});
+        resp.status(500).json({'message': 'Error', error: e});
     }
 };
 
