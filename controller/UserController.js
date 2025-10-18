@@ -2,7 +2,7 @@ const User = require('../model/UserSchema');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECERET = process.env.JWT_SECERET;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const signup = async (req, resp) => {
     try {
@@ -27,7 +27,7 @@ const login = async (req, resp) => {
         const isPasswordValid = await bcrypt.compare(password, existingUser.passwordHash);
         if (!isPasswordValid) return resp.status(401).json({'message': 'Invalid Password'});
 
-        const token = jwt.sign({email:existingUser.email}, JWT_SECERET, {expiresIn: '10h'});
+        const token = jwt.sign({email:existingUser.email}, JWT_SECRET, {expiresIn: '10h'});
         resp.status(200).json({'message': 'Success', token:token});
 
     } catch (e) {
