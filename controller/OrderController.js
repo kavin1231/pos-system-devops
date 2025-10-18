@@ -7,7 +7,7 @@ const createOrder = async (req, resp) => {
             date, totalCost, products, customer
         });
         await createdOrder.save();
-        resp.state(201).json({message: 'Order Saved...'});
+        resp.status(201).json({message: 'Order Saved...'});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});
@@ -16,7 +16,7 @@ const createOrder = async (req, resp) => {
 const findAllOrders = async (req, resp) => {
     try {
         const dataList = await OrderSchema.find();
-        resp.state(201).json({message: 'Orders..', dataList:dataList});
+        resp.status(201).json({message: 'Orders..', dataList:dataList});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});

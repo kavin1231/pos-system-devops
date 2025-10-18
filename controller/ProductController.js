@@ -7,7 +7,7 @@ const createProduct = async (req, resp) => {
             description, unitPrice, qtyOnHand
         });
         await createdProduct.save();
-        resp.state(201).json({message: 'Product Saved...'});
+        resp.status(201).json({message: 'Product Saved...'});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});
@@ -17,11 +17,11 @@ const createProduct = async (req, resp) => {
 const updateProduct = async (req, resp) => {
     try {
         const {description, unitPrice, qtyOnHand} = req.body;
-        const updatedData = ProductSchema.findByIdAndUpdate({_id: req.params.id},
+        const updatedData = await ProductSchema.findByIdAndUpdate({_id: req.params.id},
             {description: description, unitPrice: unitPrice, qtyOnHand: qtyOnHand}, {new: true});
 
         if (!updatedData) return resp.status(500).json({'message': 'Try Again'});
-        resp.state(201).json({message: 'Product Updated...'});
+        resp.status(201).json({message: 'Product Updated...'});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});
@@ -30,11 +30,11 @@ const updateProduct = async (req, resp) => {
 const updateProductQty = async (req, resp) => {
     try {
         const {qtyOnHand} = req.body;
-        const updatedData = ProductSchema.findByIdAndUpdate({_id: req.params.id},
+        const updatedData = await ProductSchema.findByIdAndUpdate({_id: req.params.id},
             {qtyOnHand: qtyOnHand}, {new: true});
 
         if (!updatedData) return resp.status(500).json({'message': 'Try Again'});
-        resp.state(201).json({message: 'Product Updated...'});
+        resp.status(201).json({message: 'Product Updated...'});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});
@@ -42,10 +42,10 @@ const updateProductQty = async (req, resp) => {
 };
 const deleteProduct = async (req, resp) => {
     try {
-        const updatedData = ProductSchema.findByIdAndDelete({_id: req.params.id});
+        const updatedData = await ProductSchema.findByIdAndDelete({_id: req.params.id});
 
         if (!updatedData) return resp.status(500).json({'message': 'Try Again'});
-        resp.state(204).json({message: 'Product Deleted...'});
+        resp.status(204).json({message: 'Product Deleted...'});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});
@@ -53,11 +53,11 @@ const deleteProduct = async (req, resp) => {
 };
 const findProductById = async (req, resp) => {
     try {
-        const selectedProduct = ProductSchema.findOne({_id: req.params.id});
+        const selectedProduct = await ProductSchema.findOne({_id: req.params.id});
 
         if (!selectedProduct) return resp.status(404).json({'message': 'Not Found'});
 
-        resp.state(200).json({message: 'Product Data', data:selectedProduct});
+        resp.status(200).json({message: 'Product Data', data:selectedProduct});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});
@@ -65,8 +65,8 @@ const findProductById = async (req, resp) => {
 };
 const loadAllProducts = async (req, resp) => {
     try {
-        const Products = ProductSchema.find();
-        resp.state(200).json({message: 'Product Data', dataList:Products});
+        const Products = await ProductSchema.find();
+        resp.status(200).json({message: 'Product Data', dataList:Products});
 
     } catch (e) {
         resp.status(500).json({'message': 'Error', error: e});

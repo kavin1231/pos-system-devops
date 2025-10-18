@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-app.use(bodyParser.urlencoded);
+app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 const UserRoute = require('./routes/UserRoute');
