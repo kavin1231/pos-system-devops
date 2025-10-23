@@ -2,6 +2,8 @@ const User = require('../model/UserSchema');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = process.env.JWT_SECRET;
+
 const signup async (req,resp)=>{
    try{
       const{fullName,email,password}=req.body;
@@ -16,9 +18,18 @@ const signup async (req,resp)=>{
    }
 
 };
-const login async (req,res)=>{
+const login async (req,resp)=>{
    try{
 
+   const {email,password}=req.body;
+   const existingUser = await User.findOne({email});
+   if(!existingUser) return resp.status(404).json({'message':'User Not Found'});
+
+   const isPasswordValid = await bcrypt.compare(password,existingUser.passwordHash)
+   if(!isPasswordValid) return resp.status(404).json({'message':'Invalid Password'});
+
+   const token = jwt.sign({email:existingUser.email}, JWT_SECRET,{expiresIn:'10h'});
+   resp.status(200).json({'message':'Success', token:token});
 
    }catch(e){
       resp.status(500).json({'message':'Signup error :',error:e})
