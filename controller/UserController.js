@@ -35,5 +35,4 @@ const login async (req,resp)=>{
       resp.status(500).json({'message':'Signup error :',error:e})
    }
 };
-
 module.exports=(signup,login);
