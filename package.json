@@ -1,0 +1,26 @@
+{
+  "name": "pos-system-devops",
+  "version": "1.0.0",
+  "description": "my first application withour devops",
+  "homepage": "https://github.com/kavin1231/pos-system-devops#readme",
+  "bugs": {
+    "url": "https://github.com/kavin1231/pos-system-devops/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kavin1231/pos-system-devops.git"
+  },
+  "license": "ISC",
+  "author": "kavin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.0"
+  }
+}
