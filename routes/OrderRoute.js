@@ -6,9 +6,9 @@ const middleware = require('../middleware/Middleware');
 
 
 // Create a new customer
-router.post('/create', OrderController'.createOrder);
+router.post('/create', OrderController.createOrder);
 
 // Load all customers
-router.get('/find-all', OrderController'.findAllOrders);
+router.get('/find-all', OrderController.findAllOrders);
 
 module.exports= router;
