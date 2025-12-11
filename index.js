@@ -5,7 +5,7 @@ require('dotenv').config();
 
 //Intialize the app
 const app = express();
-app.use(bodyParser.urlencoded);
+app.use(bodyParser.urlencoded());
 //for data read
 app.use(bodyParser.json());
 
